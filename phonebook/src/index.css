@@ -6,23 +6,66 @@
 }
 
 html, body{
+    height: 100%;
     margin: 0;
-    padding: 0;
+}
+
+#root{
+    height: 100%;
+}
+
+.keret{
+    background-color:#f2f2f2;
+    height: 100%;
+}
+
+.lablec{
+    background-color: var(--mategreen);
+    width: 100%;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
 }
 
 .fejlec{
     background-color: var(--mategreen);
     padding: 10px;
     color: white;
+    display: flex;
+    justify-content: space-between;
 }
 
-.tartalomKartyak{
-    background-color:#f2f2f2;
-    height: 100%;
+.fejlecElem{
+    width: 240px;
+}
+
+.kereso{
+    width: 350px;
+    background-color: var(--mateblue);
+    border: 4px solid white;
+    margin: auto;
+}
+
+.keresoFejlec{
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 4px solid white;
+}
+
+.keresoTartalom{
+    padding: 5px;
+}
+
+.tartalom{
     overflow-y: auto;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
+    padding-bottom: 30px;
+    background-color:#f2f2f2;
 }
 
 .tartalom2{
@@ -42,7 +85,7 @@ html, body{
 .kartya{
     width: 420px;
     height: fit-content;
-    border: 2px solid var(--mateblue);
+    border: 4px solid var(--mateblue);
     padding: 10px;
     margin: 10px 0px 0px 10px;
     background-color: white;
@@ -51,12 +94,13 @@ html, body{
 .kartyaNev{
     background-color: var(--mategreen);
     color: white;
-    padding: 10px;
     width: fit-content;
     position: relative;
     margin-top: -25px;
     margin-left: -25px;
-    
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .kartyaTartalom{
@@ -66,7 +110,7 @@ html, body{
 }
 
 .kartyaBal{
-    width: 130px;
+    width: 132px;
     text-align: right;
     vertical-align: top;
     font-weight: 700;
@@ -76,24 +120,6 @@ html, body{
     padding-left: 10px;
     vertical-align: top;
     font-weight: 500;
-}
-
-.kartyaKereses{
-    border: 2px solid var(--mategreen);
-    background-color: var(--mategreen);
-}
-
-.kartyaNevKereses{
-    background-color: var(--mateblue);
-}
-
-.kartyaTartalomKereses{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 10px 10px 5px 10px;
-    color: white;
 }
 
 td{
