@@ -4,6 +4,8 @@ import LoginForm from './components/LoginForm';
 
 import "@blueprintjs/core/lib/css/blueprint.css";
 import { Button, ButtonGroup, FormGroup, InputGroup } from '@blueprintjs/core';
+import { Column, Table, Cell } from "@blueprintjs/table";
+import "@blueprintjs/table/lib/css/table.css";
 import { render } from '@testing-library/react';
 
 function App() {
@@ -16,6 +18,10 @@ function App() {
     azonosito: "tomi",
     jelszo: "kiraly"
   }
+
+  const cellRenderer = (rowIndex: number) => {
+    return <Cell>{"aaa"}</Cell>
+  };
 
   const [user, setUser] = useState({ azonosito: ""});
   const [error, setError] = useState("");
@@ -42,11 +48,36 @@ function App() {
   }
 
   return (
+    
     <div className="App">
       {(user.azonosito != "") ? (
-      <div className="welcome" >
+      <div className="fooldal" >
         <h2>Sikeres bejeletnkezés!</h2>
-        <button onClick={Logout}>Logout</button>
+
+        <div className="fejlec">
+          <ButtonGroup>
+            <Button text="Fiók adatok"></Button>
+            <Button text="Szolgáltatások"></Button>
+            <Button text="Jelszó változtatás"></Button>
+            <Button onClick={Logout}>Kilépés</Button>
+          </ButtonGroup>
+        </div>
+
+        <div className="tartalom">
+    
+          <Table numRows={10}>
+            <Column name="megnevezes" cellRenderer={cellRenderer}/>
+            <Column name="adat"/>
+          </Table>
+
+          <Table numRows={3}>
+            <Column name="megnevezes"/>
+            <Column name="adat" cellRenderer={cellRenderer}/>
+            <Column/>
+          </Table>
+
+        </div>
+
       </div>
      ) : (
       <LoginForm Login={Login} error={error}/>
