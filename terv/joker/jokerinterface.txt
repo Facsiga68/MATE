@@ -1,0 +1,29 @@
+MATE azonosító - text
+Jelszó - text
+
+Fiók adatai - tömb
+ami tartalmaz:
+	MATE azonosító
+	Fiók státusza
+	Munkaállomás bejelentkezés
+	Jelszó érvényessége
+	Fiók típusa
+	Teljes név
+	Vezetéknév
+	Keresztnév
+	Elsődleges e-mailcím
+	Másodlagos e-mailcím
+
+Szolgáltatás - tömb
+ami tartalmaz:
+	E-mail
+	E-learning (Moodle)
+	eduroam (wifi)
+	Munkaállomás bejelentkezés (Budai Campus, Gödöllő)
+	Webes elektronikus szavazórendszer (EHHO)
+	Neptun tanulmányi rendszer
+	Office 365 szolgáltatás
+	Posterestante - nagyméretű file küldés
+	Tárhely - böngészőből elérhető fájl tároló
+
+Jelszó - text
