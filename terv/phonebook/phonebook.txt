@@ -1,3 +1,5 @@
+táblázat: szemelyadat
+
 szemely_nevelotag
 szemely_csaladnev
 szemely_keresztnev
@@ -8,24 +10,29 @@ szemely_cim
 szemely_szervegysnev
 szemely_munkakor
 
-nev = szemely_nevelotag + szemely_csaladnev + szemely_keresztnev
-telefonszam = szemely_telefon
-mellekszam = szemely_mellek
-email = szemely_emailceg
-cim = szemely_cim
-szervegysnev = szemely_szervegysnev
-munkakor = szemely_munkakor
+
+
+nev: szemely_nevelotag + szemely_csaladnev + szemely_keresztnev
+telefon: szemely_telefon
+mellektelefon: szemely_mellek
+emailcim: szemely_emailceg
+cim: szemely_cim
+szervegysnev: szemely_szervegysnev
+munkakor: szemely_munkakor
+
+
 
 Egyszerű keresés:
-Csak a nev-ben keres
+Csak a szemely_nevelotag, szemely_csaladnev és szemely_keresztnev oszlopaiban keres
 
-Összetett keresés: 
-Mindegyik oszlopban keres
+Összetett keresés:
+Minden oszlopban keres
+Feltételek között OR kapcsolat van
 
 Szűrt keresés:
-Saját oszlopukban keres, pl.: nevet a nev-ben keresi, emailcímet az email-ben stb.
-
-
+Saját oszlopában keres csak
+telefonszámot csak a szemely_telefon oszlopban keres, címet csak a szemely_cim oszlopban keres
+Feltételek között AND kapcsolat van
 
 
 

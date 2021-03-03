@@ -8,8 +8,6 @@ import mate_logo_feher from "./kepek/mate-logo-feher.png";
 import hu_flag from "./kepek/hu_flag.png";
 import us_uk_flag from "./kepek/us_uk_flag.png"
 
-var checkboxOn = true;
-
 export default class App extends React.Component {
 
   state = {
@@ -181,8 +179,10 @@ export default class App extends React.Component {
             </div>
           </div>
           <div className="fejlecElem">
-              <img src={hu_flag} className="zaszlok bal"/>
-              <img src={us_uk_flag} className="zaszlok jobb"/>
+            <div className="zaszlok">
+              <img src={hu_flag} className="zaszlo"/>
+              <img src={us_uk_flag} className="zaszlo"/>
+            </div>
           </div>
         </div>
           <div className="tartalom">
