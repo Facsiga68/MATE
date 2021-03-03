@@ -97,17 +97,14 @@ export default class App extends React.Component {
     ]
   }
 
-  //textboxba való írás: textboxValue egyenlő lesz a textboxba írt szöveg értékével
   textboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({textboxValue: event.target.value})
   };
 
-  //Keresés gomb megnyomása: filter egyenlő lesz a textBoxValue értékével
   gombKereses = () => {
     this.setState({filter: this.state.textboxValue})
   }
 
-  //Mégsem gomb megnyomása: filter és textboxValue értékét kitörli
   gombMegsem = () => {
     this.setState({filter: ""})
     this.setState({textboxValue: ""})
