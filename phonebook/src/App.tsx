@@ -1,11 +1,12 @@
 import React, { ChangeEvent } from 'react';
 import ReactDOM from "react-dom";
-import { ButtonGroup, Button, Colors, InputGroup, Icon} from "@blueprintjs/core";
+import {  Button, Colors, InputGroup, Icon} from "@blueprintjs/core";
+
 import "./index.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import mate_logo_feher from "./kepek/mate-logo-feher.png"
 
-export default class RicsiVagyok extends React.Component {
+export default class App extends React.Component {
 
   state = {
     textboxValue: "",
@@ -76,12 +77,20 @@ export default class RicsiVagyok extends React.Component {
         email: "Nagy.Balazs@szie.hu"
       },
       {
-        nev: "Nagy Barnabás Ádám",
+        nev: "Teszt1",
         munkakor: "Egyetemi tanársegéd",
         szervezetiEgyseg: "Borászati Tanszék",
         hely: "1118 Budapest, Ménesi út 45., D épület I. emelet",
         kozvetlenSzam:	"+36-(1)-305-7312", telefonMellek: "+36-(1)-305-7100 ext. 6312",
-        email: "Nagy.Balazs@szie.hu"
+        email: "teszt1@gmail.com"
+      },
+      {
+        nev: "Teszt2",
+        munkakor: "Egyetemi tanársegéd",
+        szervezetiEgyseg: "Borászati Tanszék",
+        hely: "1118 Budapest, Ménesi út 45., D épület I. emelet",
+        kozvetlenSzam:	"+36-(1)-305-7312", telefonMellek: "+36-(1)-305-7100 ext. 6312",
+        email: "email2@gmail.com"
       }
     ]
   }
@@ -102,12 +111,25 @@ export default class RicsiVagyok extends React.Component {
     this.setState({textboxValue: ""})
   }
 
+  keresesEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      this.gombKereses()
+    }
+  }
+
   render() {
     const { filter, emberek } = this.state;
     const lowercasedFilter = filter.toLowerCase();
     const filteredEmberek = emberek.filter(item => {
-      if (filter != ""){
-        return (item.nev.toLowerCase().includes(lowercasedFilter))
+      if (lowercasedFilter != ""){
+        return (
+          item.nev.toLowerCase().includes(lowercasedFilter) ||
+          item.email.toLowerCase().includes(lowercasedFilter) ||
+          item.hely.toLowerCase().includes(lowercasedFilter) ||
+          item.kozvetlenSzam.toLowerCase().includes(lowercasedFilter) ||
+          item.munkakor.toLowerCase().includes(lowercasedFilter) ||
+          item.szervezetiEgyseg.toLowerCase().includes(lowercasedFilter)
+        )
       }
     });
 
@@ -132,12 +154,24 @@ export default class RicsiVagyok extends React.Component {
                     value={this.state.textboxValue}
                     onChange={this.textboxChange}
                     placeholder="Keresés név alapján"
+                    onKeyPress={this.keresesEnter}
                   />
-                </div>
-                <div style={{paddingTop: 5, paddingBottom: 5}}>A megadott szövegre a névjegy minden adatában keresünk (pl. név, telefonszám, szobaszám stb.).</div>
+                </div >
+                
+                
+
+                  A megadott szövegre a névjegy minden adatában keresünk (pl. név, telefonszám, szobaszám stb.).
+
                 <Button
                   icon={<Icon icon="search" color="#fff"/>}
                   text="Keresés"
+                  style={{marginRight: 10, background: "#007548", color: '#fff'}}
+                  onClick={this.gombKereses}
+                  color={Colors.WHITE}
+                />
+                <Button
+                  icon={<Icon icon="settings" color="#fff"/>}
+                  text="Részletes Keresés"
                   style={{marginRight: 10, background: "#007548", color: '#fff'}}
                   onClick={this.gombKereses}
                   color={Colors.WHITE}
