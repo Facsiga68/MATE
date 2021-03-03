@@ -1,84 +1,89 @@
 import React,  { useState } from 'react';
 import './App.css';
+import LoginForm from './components/LoginForm';
 
 import "@blueprintjs/core/lib/css/blueprint.css";
 import { Button, ButtonGroup, FormGroup, InputGroup } from '@blueprintjs/core';
+import { Column, Table, Cell } from "@blueprintjs/table";
+import "@blueprintjs/table/lib/css/table.css";
 import { render } from '@testing-library/react';
 
-function Belepve(props: any) {
-  return <h1>Belépve.</h1>;
-}
-
-function Kilepve(props: any) {
-  return <h1>Kilépve.</h1>;
-}
-
-function JelenlegiAllapot(props: any) {
-  const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return <Belepve />;
-    }
-    return <Kilepve />;
-}
-
-  class App extends React.Component {
-
-  state= {
-    belepve: 0,
-    kilepve: 1,
-    filter: "",
-    felhasznalok: [
-      {
-        id: "id",
-        jelszo: "jelszo"
-      },
-    ]
+function App() {
+  const adminUser = {
+    azonosito: "bigot",
+    jelszo: "admin"
   }
 
-  gombBelepes = () => {
-    if (<JelenlegiAllapot isLoggedIn = {true}/>)
+  const adminTomi = {
+    azonosito: "tomi",
+    jelszo: "kiraly"
+  }
+
+  const cellRenderer = (rowIndex: number) => {
+    return <Cell>{"aaa"}</Cell>
+  };
+
+  const [user, setUser] = useState({ azonosito: ""});
+  const [error, setError] = useState("");
+
+  const Login = (details: any) => {
+    console.log(details);
+
+    if (details.azonosito == adminUser.azonosito && details.jelszo == adminUser.jelszo || details.azonosito == adminTomi.azonosito && details.jelszo == adminTomi.jelszo)
     {
-      alert("Sikerult belepni")
+      console.log("Bejelentkezve!");
+      setUser({
+        azonosito: details.azonosito
+      })
     }
     else
     {
-      alert("Nem sikerult belepni")
+      console.log("Nem egyezik az adat!");
+      setError("Nem egyezik az adat!");
     }
   }
 
-  render() {
+  const Logout = () => {
+    setUser({ azonosito: ""});
+  }
 
-    return (
-      <div className="Login">
+  return (
+    
+    <div className="App">
+      {(user.azonosito != "") ? (
+      <div className="fooldal" >
+        <h2>Sikeres bejeletnkezés!</h2>
 
-        <FormGroup>
-
-          <InputGroup
-          style={{width: "200px"}}
-          type="text"
-          >
-          </InputGroup>
-
-          <InputGroup
-          style={{width: "200px"}}
-          type="password"
-          >
-          </InputGroup>
-
+        <div className="fejlec">
           <ButtonGroup>
-            <Button
-            onClick={this.gombBelepes}
-            >Belépés</Button>
-            <Button>Elfelejtett jelszó</Button>
+            <Button text="Fiók adatok"></Button>
+            <Button text="Szolgáltatások"></Button>
+            <Button text="Jelszó változtatás"></Button>
+            <Button onClick={Logout}>Kilépés</Button>
           </ButtonGroup>
+        </div>
 
-        </FormGroup>
+        <div className="tartalom">
+    
+          <Table numRows={10}>
+            <Column name="megnevezes" cellRenderer={cellRenderer}/>
+            <Column name="adat"/>
+          </Table>
 
-        <JelenlegiAllapot isLoggedIn={false} />
+          <Table numRows={3}>
+            <Column name="megnevezes"/>
+            <Column name="adat" cellRenderer={cellRenderer}/>
+            <Column/>
+          </Table>
+
+        </div>
 
       </div>
-    )
-  }
+     ) : (
+      <LoginForm Login={Login} error={error}/>
+    )}
+    </div>
+  );
 }
 
 export default App;
