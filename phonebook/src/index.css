@@ -59,10 +59,10 @@ html, body{
     padding: 10px;
 }
 
-.input[type="checkbox"]:checked {
-    background: red;
+.zaszlok{
+    height: 40px;
+    border: 3px solid white;
 }
-
 
 .tartalom{
     overflow-y: auto;

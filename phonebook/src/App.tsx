@@ -1,10 +1,14 @@
 import React, { ChangeEvent } from 'react';
 import ReactDOM from "react-dom";
-import {  Button, Colors, InputGroup, Icon} from "@blueprintjs/core";
+import {  Button, ButtonGroup, Colors, InputGroup, Icon} from "@blueprintjs/core";
 
 import "./index.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
-import mate_logo_feher from "./kepek/mate-logo-feher.png"
+import mate_logo_feher from "./kepek/mate-logo-feher.png";
+import hu_flag from "./kepek/hu_flag.png";
+import us_uk_flag from "./kepek/us_uk_flag.png"
+
+var checkboxOn = true;
 
 export default class App extends React.Component {
 
@@ -157,10 +161,7 @@ export default class App extends React.Component {
                     onKeyPress={this.keresesEnter}
                   />
                 </div >
-                
-                
-
-                  A megadott szövegre a névjegy minden adatában keresünk (pl. név, telefonszám, szobaszám stb.).
+                  <div>A megadott szövegre a névjegy minden adatában keresünk (pl. név, telefonszám, szobaszám stb.).</div>
 
                 <Button
                   icon={<Icon icon="search" color="#fff"/>}
@@ -179,11 +180,13 @@ export default class App extends React.Component {
               </div>
             </div>
           </div>
-          <div className="fejlecElem">Nyelv</div>
+          <div className="fejlecElem">
+              <img src={hu_flag} className="zaszlok bal"/>
+              <img src={us_uk_flag} className="zaszlok jobb"/>
+          </div>
         </div>
           <div className="tartalom">
             <div className="kartyak">
-            
               {filteredEmberek.map(item => (
                 <div className="kartya">
                   <div className="kartyaNev">{item.nev}</div>
