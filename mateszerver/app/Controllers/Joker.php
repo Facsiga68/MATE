@@ -8,14 +8,14 @@ class Joker extends ResourceController
 {
     use ResponseTrait;
 
-    public function getUser($id = null){
+    public function tesztszoveg(){
+        return "Ez egy tesztelés";
+    }
+
+    public function tesztszemely($id){
         $model = new JokerModel();
-        $data = $model->where('id', $id)->first();
-        if($data){
-            return $this->respond($data);
-        }else{
-            return $this->failNotFound('A keresett személy nem található!');
-        }
+        $data = $model->teszt($id);
+        return $this->respond($data);
     }
 
 }

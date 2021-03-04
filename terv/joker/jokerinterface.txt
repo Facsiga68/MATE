@@ -1,8 +1,31 @@
-MATE azonosító - text
-Jelszó - text
+Interface neve:
+	MATEazonosito
+Bemenő paraméterek:
+	1. Felhasználó neve: FNEV varchar(50)
+Kimenő paraméterek:
+	1. Leétezik ez a felhasználó név: VAN bool
 
-Fiók adatai - tömb
-ami tartalmaz:
+Leírás:
+A felhasználó nevet (FNEV) elküldjük a szervernek és a szerver vissza küldi, hogy létezik-e ilyen felhasználó név.
+
+Interface neve:
+	MATEjelszo
+Bemenő paraméterek:
+	1. Jelszó: FJELSZO varchar(50)
+Kimenő paraméterek:
+	1. Egyezés: BELEPESEGYEZES bool
+
+Leírás:
+A jelszót (FJELSZO) elküldjük a szervernek és ha a felhasználónévhez tartozó jelszó megegyezik az FJELSZO-val akkor kérjük, hogy egyezik-e.
+
+Interface neve:
+	FiokAdat
+Bemenő paraméterek:
+	1. Felhasználó neve: FNEV varchar (50)
+Kimenő paraméterek:
+	1. Adatok: FADAT array
+
+a tömb tartalmaz:
 	MATE azonosító
 	Fiók státusza
 	Munkaállomás bejelentkezés
@@ -14,7 +37,16 @@ ami tartalmaz:
 	Elsődleges e-mailcím
 	Másodlagos e-mailcím
 
-Szolgáltatás - tömb
+Leírás:
+Amint a felhasználó bejelentkezett és a fiók adataira lép akkor a tömbből egy táblázatban megjelenítjük a fiók adatait.
+
+Interface neve:
+	Szolgaltatasok
+Bemenő paraméterek:
+	1. Felhasználó neve: FNEV varchar (50)
+Kimenő paraméterek:
+	1. Adatok: SZOLG array
+
 ami tartalmaz:
 	E-mail
 	E-learning (Moodle)
@@ -26,4 +58,17 @@ ami tartalmaz:
 	Posterestante - nagyméretű file küldés
 	Tárhely - böngészőből elérhető fájl tároló
 
-Jelszó - text
+Leírás:
+Amint a felhasználó bejelentkezett és a szolgáltatások fülre lép akkor a tömbből egy táblázatban megjelenítjük a szolgáltatásokat.
+
+Interface neve:
+	JelszoValtoztat
+Bemenő paraméterek:
+	1. FJELSZO varchar(50)
+	2. UJJELSZO varchar(50)
+Kimenő paraméterek:
+	1. Egyezés: JELSZOVALTEGYEZES bool
+	2. Sikeres: SIKERJELSZO bool
+
+Leírás: A felhasználó jelenlegi jelszavát lekérjük a szerverről és ellenőrizzük, hogy megegyezik-e a felhasználó által begépelt jelenlegi jelszóval
+(ismételt ellenőrzés céljából), ezután az új jelszót (UJJELSZO) elküldjük a szervernek és az lecseréli a jelenlegi jelszót.
