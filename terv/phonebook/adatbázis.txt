@@ -1,0 +1,81 @@
+táblázat: szemelyadat
+
+
+Egyszerű keresés (Egyzeru_kereses):
+    Bemenő: nev char(100)
+
+    Kimenő: szemely_nevelotag
+            szemely_csaladinev
+            szemely_keresztnev
+            szemely_telefon
+            szemely_mellek
+            szemely_emailceg
+            szemely_cim
+            szemely_szervegysnev
+            szemely_munkakor
+
+    A szemely_nevelotag, szemely_csaladinev, szemely_keresztnev oszlopaiban keressük a bemenő adatot.
+    A feltételek között VAGY kapcsolat van.
+
+    Kimenő adatként a felsorolt oszlopokból kinyert adatokat kapjuk.
+
+   
+
+
+Összetett keresés (Osszetett_kereses):
+    Bemenő: szoveg char(200)
+
+    Kimenő: szemely_nevelotag
+            szemely_csaladinev
+            szemely_keresztnev
+            szemely_telefon
+            szemely_mellek
+            szemely_emailceg
+            szemely_cim
+            szemely_szervegysnev
+            szemely_munkakor
+
+    A bemenő adatot minden felsorolt oszlopban keressük.
+    A feltételek között VAGY kapcsolat van.
+    
+    Kimeneti adatként minden találat sorát adja meg, pl.: Ha 'Ádám' a bemeneti szó, akár a szemely_keresztnev, vagy a szemely_cim oszlopában található, adja vissza a sort a kimeneten.
+    Kimenő adatként a felsorolt oszlopokból kinyert adatokat kapjuk.
+
+
+
+
+Szűrt keresés (Szurt_kereses):
+    Bemenő: nevelotag char(20)
+            csaladinev char(40)
+            keresztnev char(100)
+            telefon char(100)
+            mellek char(100)
+            emailceg char(70)
+            hely (200)
+            szevegysnev char(200)
+            munkakor char(200)
+
+    Kimenő: szemely_nevelotag
+            szemely_csaladinev
+            szemely_keresztnev
+            szemely_telefon
+            szemely_mellek
+            szemely_emailceg
+            szemely_cim
+            szemely_szervegysnev
+            szemely_munkakor
+
+    Minden bemenő adatot egy oszlopban keresünk:
+        nevelotag: szemely_nevelotag
+        csaladinev: szemely_csaladinev
+        keresztnev: szemely_keresztnev
+        telefon: szemely_telefon
+        mellek: szemely_mellek
+        emailceg: szemely_emailceg
+        hely: szemely_cim
+        szervegysnev: szemely_szervegysnev
+        munakakor: szemely_munkakor
+    A feltételek között ÉS kapcsolat van.
+    Ha az egyik bemenő adat üres (üresen hagyták a mezőt) akkor az ne befojásolja a végeredményt, pl.: Ne keressen üres mezőket a szemely_keresztnev oszlopban.
+
+    Kimenő adatként a felsorolt oszlopokból kinyert adatokat kapjuk.

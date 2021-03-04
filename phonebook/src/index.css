@@ -61,11 +61,21 @@ html, body{
 
 .zaszlok{
     float: right;
+    background-color: white;
+    color: black;
+    padding: 2px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: center;
 }
 
 .zaszlo{
-    height: 40px;
-    border: 3px solid white;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.szaloGombok{
+    display: block;
 }
 
 .tartalom{
@@ -140,4 +150,30 @@ td{
     font-size: 34px;
     margin-top: -10px;
     margin-left: 10px;
+}
+
+.checkBox{
+    border: 2px solid white;
+    height: 20px;
+    width: 20px;
+    padding: 0px;
+}
+
+.checkedIn{
+    background-color: lightgray;
+    color: lightgray;
+  }
+  
+.checkedOut{
+    background-color: var(--mategreen);
+    color: white;
+}
+
+.reszletesKereses{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.checkedIn:hover, .checkedOut:hover{
+    cursor: pointer;
 }

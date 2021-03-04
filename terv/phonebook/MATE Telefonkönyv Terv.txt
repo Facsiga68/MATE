@@ -1,0 +1,44 @@
+MATE Telefonkönyv Terv
+
+Rövid leírás:
+    Egy online telefonkönyv elkészítése, ahol rá lehet keresni az iskolai alkalmazottjaira, és a publikus adataikra.
+
+
+Fejléc:
+    Bal felső sarokban egy MATE logó, és alatta egy felírat, ugyan azzal a betűtípussal. Attól függően hogy magyar vagy angol e az oldal Telefonkönyv, vagy Phonebook van kiírva.
+
+    Jobb felső sarokban két gomb, egy Magyar zászló mellette a felírattak hogy Magyar, és egy Angol/Amerikai zászló English felírattal. Az oldal nyelvét ezekkel a gombokkal lehet beállítani.
+
+    Középen egy keret Keresés felírattal, amiben van egy textbox, ahova az alkalmazottak Nevét lehet beírni, és egy keresés gombbal lehet a nevükre rá keresni.
+    A textbox és a gombok között van egy Checkbox mellette ezzel a szöveggel: "A megadott szövegre a névjegy minden adatában keresünk (pl. név, telefonszám, szobaszám stb.).".
+Ha a checkboxot kipipáljuk akkor nem csak az alkalmazottak nevére kereshetünk rá, hanem minden elérhető adatukat vizsgálni fogja, vagyis OR kapcsolat van a feltételek között
+(p.: Ha azt írjuk be "Ádám", akkor azokat is ki adja eredményként akiknek a kereszneve Ádám, és azokat is akiknek helyi elérhetősége Ádám Utcában van).
+    A keresés gomb mellett van egy Részletes Keresés gomb is, ha erre rámegyünk eltűnik a checkbox és a mellette lévő szöveg, és megjelenik még 6 textbox.
+Ezekkel a személyek tulajdonságait lehet majd szűrni, vagyis AND kapcsolat van a feltételek között, pl.: Ha több Kis Ádám van az intézményben, akkor adhatunk meg telefonszámot is, hogy pontosítsunk a találatokon.
+A 7 textbox a következők kereséséért felelősek: 
+    - Név
+    - Telefonszám
+    - Mellék Telefonszám
+    - Emalcím
+    - Hely
+    - Szervezeti egység
+    - Beosztás
+A Részletes Keresés gomb helyén ebben az állapotban egy másik gomb van, Egyszerű Keresés ami vissza visz minket az alap állapotba.
+
+
+Test:
+    Itt helyezkednek el a keresési találatok. Az adott személyek információi kártyákon találhatóak emelyek egymás mellé helyezkednek el.
+Ha az új kártya a sorban nem fér el, akkor a kártyát új sorba helyezi, közvetlenül a felette lévő sorban lévő kártya alá.
+A kártyákon megjelenített információk:
+    - Név
+    - Telefonszám
+    - Mellék Telefonszám
+    - Emalcím
+    - Hely
+    - Szervezeti egység
+    - Beosztás
+
+
+Lábléc:
+    Egy sáv az oldal alján ami mindig látható. A közepére egy emailcím van írva, és hogy ide kell bejelenteni azt ha bibát találtak.
+    "Hibabejelentés: helpdesk@uni-mate.hu"

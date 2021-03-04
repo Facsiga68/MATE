@@ -9,8 +9,8 @@ import hu_flag from "./kepek/hu_flag.png";
 import us_uk_flag from "./kepek/us_uk_flag.png"
 
 export default class App extends React.Component {
-
   state = {
+    black: true,
     textboxValue: "",
     filter: "",
     emberek: [
@@ -97,6 +97,9 @@ export default class App extends React.Component {
     ]
   }
 
+
+
+
   textboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({textboxValue: event.target.value})
   };
@@ -116,6 +119,12 @@ export default class App extends React.Component {
     }
   }
 
+  changeColor(){
+    this.setState({black: !this.state.black})
+  }
+
+  
+
   render() {
     const { filter, emberek } = this.state;
     const lowercasedFilter = filter.toLowerCase();
@@ -131,6 +140,8 @@ export default class App extends React.Component {
         )
       }
     });
+
+    let checkBox = this.state.black ? "checkBox checkedIn" : "checkBox checkedOut";
 
     return (
       <div className="keret">
@@ -155,8 +166,11 @@ export default class App extends React.Component {
                     placeholder="Keresés név alapján"
                     onKeyPress={this.keresesEnter}
                   />
-                </div >
+                </div>
+                <div className="reszletesKereses">
+                  <button className={checkBox} style={{marginRight: 5, marginTop: 8, float: 'left'}} onClick={this.changeColor.bind(this)}>{<Icon icon="small-tick"/>}</button>
                   <div>A megadott szövegre a névjegy minden adatában keresünk (pl. név, telefonszám, szobaszám stb.).</div>
+                </div>
 
                 <Button
                   icon={<Icon icon="search" color="#fff"/>}
@@ -176,11 +190,9 @@ export default class App extends React.Component {
             </div>
           </div>
           <div className="fejlecElem">
-            <div className="zaszlok">
               <img src={hu_flag} className="zaszlo"/>
               <img src={us_uk_flag} className="zaszlo"/>
             </div>
-          </div>
         </div>
           <div className="tartalom">
             <div className="kartyak">
