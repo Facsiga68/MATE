@@ -23,6 +23,12 @@ function App() {
     return <Cell>{"aaa"}</Cell>
   };
 
+  const users = [
+    {nev: "Tamas", kor: "25", hely: "Gyongyos"},
+    {nev: "David", kor: "20", hely: "Matraszolos"},
+    {nev: "Richard", kor: "22", hely: "Gyongyos"}
+  ]
+
   const [user, setUser] = useState({ azonosito: ""});
   const [error, setError] = useState("");
 
@@ -52,7 +58,7 @@ function App() {
     <div className="App">
       {(user.azonosito != "") ? (
       <div className="fooldal" >
-        <h2>Sikeres bejeletnkezés!</h2>
+        <h2>Sikeres bejelentkezés!</h2>
 
         <div className="fejlec">
           <ButtonGroup>
