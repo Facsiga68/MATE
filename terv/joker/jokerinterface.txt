@@ -1,22 +1,14 @@
 Interface neve:
-	MATEazonosito
+	MATEazonositas
 Bemenő paraméterek:
 	1. Felhasználó neve: FNEV varchar(50)
-Kimenő paraméterek:
-	1. Leétezik ez a felhasználó név: VAN bool
-
-Leírás:
-A felhasználó nevet (FNEV) elküldjük a szervernek és a szerver vissza küldi, hogy létezik-e ilyen felhasználó név.
-
-Interface neve:
-	MATEjelszo
-Bemenő paraméterek:
-	1. Jelszó: FJELSZO varchar(50)
+	2. Jelszó: FJELSZO varchar(50)
 Kimenő paraméterek:
 	1. Egyezés: BELEPESEGYEZES bool
 
 Leírás:
-A jelszót (FJELSZO) elküldjük a szervernek és ha a felhasználónévhez tartozó jelszó megegyezik az FJELSZO-val akkor kérjük, hogy egyezik-e.
+A felhasználó nevet (FNEV) és a jeszót (FJELSZO) elküldjük a szervernek
+A felhasználónévhez tartozó jelszó megegyezik az FJELSZO-val akkor kérjük, hogy egyezik-e (BELEPESEGYEZES).
 
 Interface neve:
 	FiokAdat
@@ -39,6 +31,7 @@ a tömb tartalmaz:
 
 Leírás:
 Amint a felhasználó bejelentkezett és a fiók adataira lép akkor a tömbből egy táblázatban megjelenítjük a fiók adatait.
+Lekérjük az FADAT és a hozzá tartozó címeket ha léteznek ilyenek az adatbázisban.
 
 Interface neve:
 	Szolgaltatasok
@@ -60,6 +53,7 @@ ami tartalmaz:
 
 Leírás:
 Amint a felhasználó bejelentkezett és a szolgáltatások fülre lép akkor a tömbből egy táblázatban megjelenítjük a szolgáltatásokat.
+Lekérjük a SZOLG és a hozzá tartozó címeket ha léteznek ilyenek az adatbázisban.
 
 Interface neve:
 	JelszoValtoztat
@@ -68,7 +62,6 @@ Bemenő paraméterek:
 	2. UJJELSZO varchar(50)
 Kimenő paraméterek:
 	1. Egyezés: JELSZOVALTEGYEZES bool
-	2. Sikeres: SIKERJELSZO bool
 
 Leírás: A felhasználó jelenlegi jelszavát lekérjük a szerverről és ellenőrizzük, hogy megegyezik-e a felhasználó által begépelt jelenlegi jelszóval
 (ismételt ellenőrzés céljából), ezután az új jelszót (UJJELSZO) elküldjük a szervernek és az lecseréli a jelenlegi jelszót.

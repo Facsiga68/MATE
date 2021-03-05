@@ -10,8 +10,8 @@ import { render } from '@testing-library/react';
 
 function App() {
   const adminUser = {
-    azonosito: "bigot",
-    jelszo: "admin"
+    azonosito: "a",
+    jelszo: "a"
   }
 
   const adminTomi = {
