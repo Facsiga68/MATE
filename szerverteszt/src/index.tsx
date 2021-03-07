@@ -8,6 +8,8 @@ import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/table/lib/css/table.css";
+import "@blueprintjs/docs-theme/lib/css/docs-theme.css";
+import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 
 ReactDOM.render(
   <React.StrictMode>

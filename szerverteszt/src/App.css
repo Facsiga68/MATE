@@ -3,10 +3,28 @@ html, body {height: 100%; overflow-y: hidden;}
 #root {height: 100%; overflow-y: hidden;}
 .page {display: flex; flex-flow: column nowrap; height:100%; overflow-y: hidden;}
 .header {
-  background-color: blanchedalmond; min-height: 40px; padding: 20px;
+  background-color: teal; min-height: 40px; padding: 20px;
+  display: flex; flex-flow: row wrap;
 }
 .content {background-color: cadetblue; height: 100%; overflow-y: auto;
 }
 .footer{
   background-color: blanchedalmond; min-height: 40px;
+}
+.checkBox{
+  border: 2px solid white;
+  height: 20px;
+  width: 20px;
+  padding: 0px;
+}
+.checkedIn{
+  background-color: lightgray;
+  color: lightgray;
+}
+.checkedOut{
+  background-color: var(--mategreen);
+  color: white;
+}
+.checkedIn:hover, .checkedOut:hover{
+  cursor: pointer;
 }
