@@ -5,12 +5,16 @@ import { Button } from "@blueprintjs/core";
 
 
 export default class App extends React.Component {
-    private AxiosTeszt = async () => {
-      const adat = new URLSearchParams();
-      adat.append('id', "400");
-        let result = await Axios({method: "POST", url: "http://localhost:8081/joker/tesztszemely", data: {id: 345}});
-        console.log(result);
-    }
+  private AxiosTeszt = async () => {
+    //let result = await Axios({method: "POST", url: process.env.REACT_APP_SERVER_URL+"joker/tesztszemely", data: {id: 345}});
+    let result = await Axios({
+      method: "POST", 
+      url: " http://localhost/8081/joker/tesztszemely",
+      data: {id: 250}
+    });
+
+    console.log(result);
+  }
 
   render() {
 
