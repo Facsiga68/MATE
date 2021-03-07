@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.40.0",
+    "@blueprintjs/datetime": "^3.21.0",
+    "@blueprintjs/docs-theme": "^3.9.6",
+    "@blueprintjs/popover2": "^0.3.1",
+    "@blueprintjs/select": "^3.15.6",
+    "@blueprintjs/table": "^3.8.24",
+    "@blueprintjs/timezone": "^3.8.6",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
