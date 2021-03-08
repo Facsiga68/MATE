@@ -18,9 +18,16 @@ export default class App extends React.Component {
 
   private AxiosTeszt = async () => {
     let result = await Axios({
-      method: "POST", 
-      url: process.env.REACT_APP_SERVER_URL+"joker/tesztszemely",
-      data: {id: 25000}
+      method: "GET", 
+      url: process.env.REACT_APP_SERVER_URL+"joker/tesztszemely"
+    });
+    console.log(result);
+  }
+
+  private SessionsTeszt = async () => {
+    let result = await Axios({
+      method: "GET", 
+      url: process.env.REACT_APP_SERVER_URL+"joker/tesztsessions"
     });
     console.log(result);
   }
@@ -79,6 +86,7 @@ export default class App extends React.Component {
       <div className="page">
         <div className="header">
             <Button intent="success" text="Axios teszt" onClick={this.AxiosTeszt} />
+            <Button intent="success" text="Sessions teszt" onClick={this.SessionsTeszt} />
             <Button intent="success" text="SHA256 teszt" onClick={this.SHA256Teszt} style={stilus} />
             <InputGroup onChange={this.fNevValtozik} placeholder="Felhasználói név" style={{width: "100px", marginLeft: "20px"}} />
             <InputGroup onChange={this.fJelszoValtozik} placeholder="Jelszó" style={{width: "100px"}} />

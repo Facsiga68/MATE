@@ -14,17 +14,42 @@ class Joker extends ResourceController
     function __construct() {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Headers: *');
+        helper("cookie");
+        if (session_status() == PHP_SESSION_NONE)
+        {
+            $this->session = \Config\Services::session();;
+        }
+
+
+
+        //helper('cookie');
+        //$this->Response::setCookie();
         //$this->session = \Config\Services::session();
         //$this->session->start();
-        $this->session=session();
+        //$this->session=session();
     }
 
     public function tesztszemely(){
-        $id = $this->request->getVar('id');
+        //$id = $this->request->getVar('id');
+        $id=234;
+        $belepadat = [
+			'id' => 1,
+			'fnev' => "Belépési név",
+			'sznev' => "Személy neve",
+			'belepve' => TRUE
+		];
+        $this->session->set($belepadat);
         $model = new JokerModel();
         $result = $model->teszt($id);
-        return $this->respond($result);
+        return $this->respond($this->session->get());
+        //return $this->respond($result);
     }
+
+    public function tesztsessions() {
+    
+        return $this->respond($this->session->get());
+    }
+
 
     public function MATEazonositas(){
         //$this->session = \Config\Services::session();
