@@ -13,16 +13,19 @@ class PhoneBook extends ResourceController
     }
 
     public function Egyszeru_kereses(){
-        $nev = $this->request->getVar('nev');
+        $keres = $this->request->getVar('nev');
         $model = new PhoneBookModel();
-        $result = $model->Egyszeru_kereses($nev);   
+        $result = $model->Egyszeru_kereses($keres);
         return $this->respond($result);    
     }
 
     public function Osszetett_kereses(){
-        $nev = $this->request->getVar('nev');
+        $keres = $this->request->getVar('nev');
         $model = new PhoneBookModel();
-        $result = $model->Osszetett_kereses($nev);   
+        $result = $model->Osszetett_kereses($keres);  
+
+        //return $result;
+
         return $this->respond($result);    
     }
 

@@ -13,7 +13,8 @@ export default class App extends React.Component {
     fnev: '',
     fjelszo: '',
     lekerNev: '',
-    rendszegazda: false
+    rendszegazda: false,
+    keresNev: ''
   };
 
   private AxiosTeszt = async () => {
@@ -76,6 +77,30 @@ export default class App extends React.Component {
     this.setState({rendszegazda: !this.state.rendszegazda})
   }
 
+  keresNevValtozik = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({keresNev: event.target.value})
+  };
+
+  private EgyszeruKereses = async () => {
+    let nev=this.state.keresNev;
+    let result = await Axios({
+      method: "POST", 
+      url: process.env.REACT_APP_SERVER_URL+"PhoneBook/Egyszeru_kereses",
+      data: {nev: nev}
+    });
+    console.log(result);
+  }
+
+  private OsszetettKereses = async () => {
+    let nev=this.state.keresNev;
+    let result = await Axios({
+      method: "POST", 
+      url: process.env.REACT_APP_SERVER_URL+"PhoneBook/Osszetett_kereses",
+      data: {nev: nev}
+    });
+    console.log(result);
+  }
+
   render() {
 
     let stilus: CSS.Properties = {
@@ -94,7 +119,11 @@ export default class App extends React.Component {
             <InputGroup onChange={this.lekerNevValtozik} placeholder="Lekér név" style={{width: "100px", marginLeft: "20px"}} />
             <Button intent="success" text="Adatok lekérése" onClick={this.LekeresTeszt} />
             <button className={checkBox} style={{marginLeft: "5px", marginTop: "5px"}} onClick={this.RGazda.bind(this)}>{<Icon icon="small-tick"/>}</button>
- 
+        </div>
+        <div className="header">
+            <InputGroup onChange={this.keresNevValtozik} placeholder="Keresés ..." style={{width: "100px", marginLeft: "20px"}} />
+            <Button intent="success" text="Egyszerű keresés" onClick={this.EgyszeruKereses} />
+            <Button intent="success" text="Összetett keresés" onClick={this.OsszetettKereses} />
         </div>
         <div className="content">
 
