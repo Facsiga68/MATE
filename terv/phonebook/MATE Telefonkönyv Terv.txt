@@ -29,6 +29,7 @@ A Részletes Keresés gomb helyén ebben az állapotban egy másik gomb van, Egy
 Test:
     Itt helyezkednek el a keresési találatok. Az adott személyek információi kártyákon találhatóak emelyek egymás mellé helyezkednek el.
 Ha az új kártya a sorban nem fér el, akkor a kártyát új sorba helyezi, közvetlenül a felette lévő sorban lévő kártya alá.
+    Valahol megjeleníteni hány találat van.
 A kártyákon megjelenített információk:
     - Név
     - Telefonszám
@@ -37,6 +38,7 @@ A kártyákon megjelenített információk:
     - Hely
     - Szervezeti egység
     - Beosztás
+
 
 
 Lábléc:
