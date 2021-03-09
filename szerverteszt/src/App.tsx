@@ -19,16 +19,19 @@ export default class App extends React.Component {
 
   private AxiosTeszt = async () => {
     let result = await Axios({
-      method: "GET", 
-      url: process.env.REACT_APP_SERVER_URL+"joker/tesztszemely"
+      method: "POST", 
+      data: {id: 431},
+      url: process.env.REACT_APP_SERVER_URL+"joker/tesztszemely",
+      withCredentials: true
     });
     console.log(result);
   }
 
   private SessionsTeszt = async () => {
     let result = await Axios({
-      method: "GET", 
-      url: process.env.REACT_APP_SERVER_URL+"joker/tesztsessions"
+      method: "POST", 
+      url: process.env.REACT_APP_SERVER_URL+"joker/tesztsessions",
+      withCredentials: true
     });
     console.log(result);
   }
@@ -45,7 +48,8 @@ export default class App extends React.Component {
       let result = await Axios({
         method: "POST", 
         url: process.env.REACT_APP_SERVER_URL+"joker/MATEazonositas",
-        data: {FNEV: FNEV, FJELSZO: FJELSZO}
+        data: {FNEV: FNEV, FJELSZO: FJELSZO},
+        withCredentials: true
       });
       console.log(result);
   }
@@ -56,7 +60,8 @@ export default class App extends React.Component {
     let result = await Axios({
       method: "POST", 
       url: process.env.REACT_APP_SERVER_URL+"joker/FiokAdat",
-      data: {FNEV: FNEV, RGAZDA: RGAZDA}
+      data: {FNEV: FNEV, RGAZDA: RGAZDA},
+      withCredentials: true
     });
     console.log(result);
   }
