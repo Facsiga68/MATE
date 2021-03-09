@@ -12,8 +12,9 @@ class Joker extends ResourceController
     
 
     function __construct() {
-        header('Access-Control-Allow-Origin: http://localhost:3000'); //mindenképpen kell
-        header('Access-Control-Allow-Headers: http://localhost:3000'); //POST metódus esetén kell
+        header('Access-Control-Allow-Origin: http://localhost:3000');       
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
         header('Access-Control-Allow-Credentials: true');
         if (session_status() == PHP_SESSION_NONE)
         {
@@ -21,8 +22,8 @@ class Joker extends ResourceController
         }
     }
 
-    public function tesztszemely($id){
-        $id = $this->request->getPost('id');
+    public function tesztszemely(){
+        $id = $this->request->getVar('id');
         $model = new JokerModel();
         $result = $model->teszt($id);
         return $this->respond($result);
@@ -39,7 +40,6 @@ class Joker extends ResourceController
         $model = new JokerModel();
         $result = $model->MATEAzonositas($fnev, $fjelszo);       
         if (count($result)==1){
-            return $this->respond(["BELEPESEGYEZES"=>true]);
             $belepadat = [
                 'id' => $result[0]["szemely_id"],
                 'fnev' => $fnev,
@@ -47,6 +47,7 @@ class Joker extends ResourceController
                 'belepve' => TRUE
             ];
             $this->session->set($belepadat);
+            return $this->respond(["BELEPESEGYEZES"=>true, "SESSIONS"=>$this->session->get()]);
         } else return $this->respond(["BELEPESEGYEZES"=>false]);
     }
 
@@ -55,11 +56,12 @@ class Joker extends ResourceController
         $rgazda = $this->request->getVar('RGAZDA');
         $belepve = $this->session->get('belepve');
         if ($belepve) {
+            if ($fnev=="") $fnev=$this->session->get("fnev");
             $model = new JokerModel();
             $adat = $model->FiokAdat($fnev);
             if (count($adat)==0) return $this->respond(["HIBA"=>"Nincs adat"]);
             else {
-                if ($rgazda || $this->session->get('szemely_id')==$adat[0]["szemely_id"]){
+                if ($rgazda || $this->session->get('id')==$adat[0]["szemely_id"]){
                     return $this->respond($adat);
                 } else return $this->respond(["HIBA"=>"Aki nem rendszergazda, csak a saját adatát kérheti le!"]);
             }
