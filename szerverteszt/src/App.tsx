@@ -17,30 +17,20 @@ export default class App extends React.Component {
   };
 
   private AxiosTeszt = async () => {
-    let headers = {
-      'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-    };
       let result = await Axios({
       method: "POST", 
       data: {id: 431},
       url: process.env.REACT_APP_SERVER_URL+"joker/tesztszemely",
-      withCredentials: true,
-      headers: headers
+      withCredentials: true
     });
     console.log(result);
   }
 
   private SessionsTeszt = async () => {
-    let headers = {
-      'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-    };
     let result = await Axios({
       method: "POST", 
       url: process.env.REACT_APP_SERVER_URL+"joker/tesztsessions",
-      withCredentials: true,
-      headers: headers
+      withCredentials: true
     });
     console.log(result);
   }
