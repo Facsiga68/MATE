@@ -89,7 +89,7 @@ export default class App extends React.Component {
     let nev=this.state.keresNev;
     let result = await Axios({
       method: "POST", 
-      url: process.env.REACT_APP_SERVER_URL+"PhoneBook/Egyszeru_kereses",
+      url: "http://localhost:8081/PhoneBook/Egyszeru_kereses",
       data: {nev: nev}
     });
     console.log(result);
