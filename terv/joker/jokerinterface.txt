@@ -13,7 +13,7 @@ A felhasználónévhez tartozó jelszó megegyezik az FJELSZO-val akkor kérjük
 Interface neve:
 	FiokAdat
 Bemenő paraméterek:
-	1. Felhasználó neve: FNEV varchar (50)
+	1. Felhasználó ID: FID varchar (50)
 Kimenő paraméterek:
 	1. Adatok: FADAT array
 
@@ -31,7 +31,9 @@ a tömb tartalmaz:
 
 Leírás:
 Amint a felhasználó bejelentkezett és a fiók adataira lép akkor a tömbből egy táblázatban megjelenítjük a fiók adatait.
-Lekérjük az FADAT és a hozzá tartozó címeket ha léteznek ilyenek az adatbázisban.
+Lekérjük az FADAT adatait és a hozzá tartozó címeket ha léteznek ilyenek az adatbázisban.
+Ha a saját adatot szeretnénk lekérni akkor -1 (tehát a session-ban tárolt ember adatait) ha más ember akkor adott id alapján kérjük le, de ez csak akkor lehetséges ha
+rendszergazda a jogosultság és az id-k már le vannak töltve, ilyenkor az id-t küldjük el, ha nem rendszergazda szeretné lekérni más adatait akkor hibával tér vissza.
 
 Interface neve:
 	Szolgaltatasok
@@ -58,10 +60,11 @@ Lekérjük a SZOLG és a hozzá tartozó címeket ha léteznek ilyenek az adatb�
 Interface neve:
 	JelszoValtoztat
 Bemenő paraméterek:
-	1. FJELSZO varchar(50)
-	2. UJJELSZO varchar(50)
+	1. UJJELSZO varchar(50)
 Kimenő paraméterek:
 	1. Egyezés: JELSZOVALTEGYEZES bool
+	2. Hiba: HIBA varchar(50)
 
-Leírás: A felhasználó jelenlegi jelszavát lekérjük a szerverről és ellenőrizzük, hogy megegyezik-e a felhasználó által begépelt jelenlegi jelszóval
-(ismételt ellenőrzés céljából), ezután az új jelszót (UJJELSZO) elküldjük a szervernek és az lecseréli a jelenlegi jelszót.
+Leírás:
+Az új jelszót (UJJELSZO) elküldjük a szervernek és az ellenőrzi annak helyességét. Ha a jelszó megfelelő akkor visszatér, hogy sikeres volt a változtatás.
+Ha a jelszó hibás akkor az előre definiált hibák egyikét visszadobja így tudtára adva a felhasználónak, hogy mit hibázott az új jelszó megadásánál.
