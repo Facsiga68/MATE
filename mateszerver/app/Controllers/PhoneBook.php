@@ -10,6 +10,7 @@ class PhoneBook extends ResourceController
     function __construct() {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Headers: *');
+        header('Access-Control-Allow-Methods: *');
     }
 
     public function Egyszeru_kereses(){

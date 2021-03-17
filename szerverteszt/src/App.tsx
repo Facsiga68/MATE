@@ -2,7 +2,6 @@ import React from 'react';
 import Axios from "axios";
 import './App.css';
 import { Button, InputGroup, Icon } from "@blueprintjs/core";
-//import { Tooltip2 } from "@blueprintjs/popover2";
 import crypto from 'crypto';
 import CSS from 'csstype';
 
@@ -18,7 +17,7 @@ export default class App extends React.Component {
   };
 
   private AxiosTeszt = async () => {
-    let result = await Axios({
+      let result = await Axios({
       method: "POST", 
       data: {id: 431},
       url: process.env.REACT_APP_SERVER_URL+"joker/tesztszemely",
@@ -90,7 +89,7 @@ export default class App extends React.Component {
     let nev=this.state.keresNev;
     let result = await Axios({
       method: "POST", 
-      url: process.env.REACT_APP_SERVER_URL+"PhoneBook/Egyszeru_kereses",
+      url: "http://localhost:8081/PhoneBook/Egyszeru_kereses",
       data: {nev: nev}
     });
     console.log(result);
